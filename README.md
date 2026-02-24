@@ -27,7 +27,7 @@
 - **用户系统**：支持手机号登录/注册，多端数据同步。
 - **JWT 认证**：安全的身份验证机制。
 
-## � 详细目录结构
+## 📁 详细目录结构
 
 ### 🎨 前端项目 (`packages/client`)
 ```text
@@ -77,7 +77,7 @@ src/
 └── server.js            # 服务端入口 (Express 实例、中间件加载、路由挂载)
 ```
 
-## �🛠️ 技术栈
+## 🛠️ 技术栈
 
 ### 前端 (Packages/Client)
 - **框架**：Vue 3 + Vite
@@ -127,5 +127,5 @@ npm run dev
 - 后端地址：`http://localhost:5000`
 
 
-## 预览
+## 🖼️ 预览
 ![预览](./preview-img/preview-1.png)
