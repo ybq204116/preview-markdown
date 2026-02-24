@@ -125,3 +125,7 @@ npm run dev
 
 - 前端地址：`http://localhost:5173`
 - 后端地址：`http://localhost:5000`
+
+
+## 预览
+![预览](./preview-img/preview-1.png)

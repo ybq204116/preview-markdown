@@ -104,10 +104,6 @@ main();
 
 ### 12. 图片 
 
-线上图片 
-
-![线上图片](https://env-00jxgxfkbq39.normal.cloudstatic.cn/share/lixin.jpg) 
-
 本地图片 
 
 ![本地图片](/lixin.jpg) 
