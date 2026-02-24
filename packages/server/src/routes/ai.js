@@ -49,10 +49,12 @@ router.post('/stream', async (req, res) => {
                 // 发送数据块，格式为 data: <content>\n\n
                 // 注意需要转义换行符，或者直接发送 JSON
                 res.write(`data: ${JSON.stringify({ content })}\n\n`);
+                if (res.flush) res.flush();
             }
         }
 
         res.write('data: [DONE]\n\n');
+        if (res.flush) res.flush();
         res.end();
     } catch (error) {
         console.error('AI Stream Error:', error);

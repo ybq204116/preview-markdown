@@ -505,17 +505,25 @@ const handleAI = async (type) => {
         // 第一次收到数据时，清空占位符内容
         let isFirstChunk = true
         let currentPos = streamStartPos
+        let buffer = ''
 
         while (true) {
             const { done, value } = await reader.read()
             if (done) break
 
-            const chunk = decoder.decode(value)
-            const lines = chunk.split('\n\n')
+            const chunk = decoder.decode(value, { stream: true })
+            buffer += chunk
+            
+            const lines = buffer.split('\n\n')
+            // 保留最后一个可能不完整的块
+            buffer = lines.pop()
             
             for (const line of lines) {
-                if (line.startsWith('data: ')) {
-                    const dataStr = line.slice(6)
+                const trimmedLine = line.trim()
+                if (!trimmedLine) continue
+                
+                if (trimmedLine.startsWith('data: ')) {
+                    const dataStr = trimmedLine.slice(6)
                     if (dataStr === '[DONE]') continue
                     
                     try {

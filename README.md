@@ -128,4 +128,4 @@ npm run dev
 
 
 ## 🖼️ 预览
-![预览](./preview-img/preview-1.png)
+![预览](./packages/client/public/preview-img/preview-1.png)
