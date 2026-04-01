@@ -43,7 +43,28 @@ const scrollToHeader = (slug) => {
     activeSlug.value = slug
     const element = document.getElementById(slug)
     if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
+        // 使用更精细的滚动控制
+        const previewContainer = element.closest('.overflow-auto') || document.querySelector('.overflow-auto')
+        if (previewContainer) {
+            // 获取元素相对于视口的位置
+            const rect = element.getBoundingClientRect()
+            const containerRect = previewContainer.getBoundingClientRect()
+            
+            // 计算需要滚动的距离 (减去一些顶部边距以便阅读)
+            const scrollTop = previewContainer.scrollTop + (rect.top - containerRect.top) - 20
+            
+            // 判断是否超出了最大可滚动范围
+            const maxScrollTop = previewContainer.scrollHeight - previewContainer.clientHeight
+            
+            // 使用平滑滚动，并限制最大滚动距离
+            previewContainer.scrollTo({
+                top: Math.min(scrollTop, maxScrollTop),
+                behavior: 'smooth'
+            })
+        } else {
+            // 降级方案
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
     }
 }
 

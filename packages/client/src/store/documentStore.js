@@ -211,7 +211,7 @@ md.use(lazyLoadImagePlugin) // 图片懒加载支持
 
 // 尝试加载其他插件
 try {
-	md.use(katexPlugin) // 数学公式支持
+	md.use(katexPlugin, { throwOnError: false, errorColor: '#cc0000' }) // 数学公式支持
 } catch (e) {
 	console.warn('无法加载katex插件:', e)
 }
